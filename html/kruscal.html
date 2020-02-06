@@ -1,0 +1,140 @@
+<html>
+    <head>
+        <title>kruscal</title>
+        <style type = "text/css">
+            body {
+                background-image:url('../picture/background.jpg');
+                background-size: cover;
+                background-attachment: fixed;
+                -webkit-background-size: cover;
+            }
+            
+            #text {
+                float:right;
+                font-family:"Times New Roman", Times, serif; 
+                background:#ece0e0;
+                padding:20px 35px 30px 65px;
+                width: 1130px;
+                opacity: 0.85;
+            }
+            h1.rua {
+                font-size:45px; 
+                text-align:center;
+            }
+            p.rua {
+                font-size:21px;
+                text-indent: 2em;
+                color: rgb(177, 6, 6);
+            }
+            p.rua2 {
+                font-size:21px;
+                color: rgb(177, 6, 6);
+                text-align:center;
+            }
+            #code{
+                font-size:16px;
+            }
+            #list{
+                background:#e0dddd;
+                font-size:23px;
+                float:left;
+                padding:23px 70px;
+                line-height:80px ;
+                opacity: 0.6;
+                height: 1215px;
+            }
+            #footer {
+                background:rgba(red, green, blue, alpha);
+                font-size:15px;
+                width:100%;
+                color: rgb(245, 81, 81);
+                position:fixed;
+                bottom:0;
+                text-align:center;
+
+            }
+            a{
+                text-decoration:none;
+            }
+            a:link {
+                color:rgb(18, 18, 19);
+            }
+            a:visited {
+                color:rgb(25, 187, 173);
+            }
+            a:hover {
+                width: 60px;
+                background: #3f3e3e;
+                color:rgb(241, 68, 68);
+                text-decoration:none;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="list">
+            <dl>
+                 <dt><a href="http://localhost:9090" target="_block" class="rua">主页</a></dt>
+                 <dt><a href="./qread.html" target="_block" class="rua">快速读入</a></dt>
+                 <dt><a href="./qpow.html" target="_block" class="rua">快速幂</a></dt>
+                 <dt><a href="./prime.html" target="_block" class="rua">素数筛法</a></dt>
+             </dl>
+        </div>
+        <div id="text">
+            <h1 class="rua">最小生成树</h1>
+            <p class="rua">所谓的最小生成树，就是在一个无向图中找出一个各边连接最短的树
+                （树是一种数据结构它是由n（n>=1）个有限结点组成一个具有层次关系的集合。把它叫做“树”是因为它看起来像一棵倒挂的树，
+                也就是说它是根朝上，而叶朝下的。它具有以下的特点：
+                每个结点有零个或多个子结点；没有父结点的结点称为根结点；每一个非根结点有且只有一个父结点；
+                除了根结点外，每个子结点可以分为多个不相交的子树，即无环）
+            <p class="rua">
+                最常见的算法有Prim和Kruskal，今天介绍的是Kruskal算法：</p>
+                <img src="../picture/kruscal.png" alt="404" width="650px" height="700px" align="right">
+            <p class="rua">
+                    先把边按照权值进行排序，用贪心的思想优先选取权值较小的边，并依次连接，若出现环则跳过此边（用并查集来判断是否存在环）继续搜，
+                    直到已经使用的边的数量比总点数少一即可。证明：刚刚有提到：如果某个连通图属于最小生成树，
+                    那么所有从外部连接到该连通图的边中的一条最短的边必然属于最小生成树。所以不难发现，当最小生成树被拆分成彼此独立的若干个连通分量的时候，
+                    所有能够连接任意两个连通分量的边中的一条最短边必然属于最小生成树。具体算法流程图解如下右：
+            </p>
+            <p class="rua">
+                    核心算法如下：</p>
+            <p>
+                <pre id="code">
+    struct Edge
+    {
+        int u,v,w;
+    }edge[200005];
+    int fa[5005],n,m,ans,eu,ev,cnt;
+    il bool cmp(Edge a,Edge b)
+    {
+        return a.w < b.w;
+    }快排的依据（按边权排序）
+    il int find(int x)
+    {
+         while(x!=fa[x]) x=fa[x]=fa[fa[x]];
+        return x;
+    }并查集循环
+    il void kruskal()
+    {
+        sort(edge,edge+m,cmp);将边的权值排序
+        for(re int i=0;i < m;i++)
+        {
+            eu=find(edge[i].u), ev=find(edge[i].v);
+            if(eu==ev)
+            {
+                continue;
+            }若出现两个点已经联通了，则说明这一条边不需要了
+            ans+=edge[i].w;//将此边权计入答案
+            fa[ev]=eu;//将eu、ev合并
+            if(++cnt==n-1)
+            {
+                break;
+            }循环结束条件，及边数为点数减一时
+        }
+    }</pre>
+            </p>
+        </div>
+        <div id="footer">
+            <p><b>幸福往往是摸得透彻，而堇业的心却常常隐藏</b></p>
+        </div>
+    </body>

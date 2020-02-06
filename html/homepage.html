@@ -1,0 +1,202 @@
+<html>
+    <head>
+        <title>homepage</title>
+        <style>
+            body {
+                background-image:url('../picture/background.jpg');
+                background-size: cover;
+                background-attachment: fixed;
+                -webkit-background-size: cover;
+            }
+            
+            #text {
+                float:right;
+                font-family:"Times New Roman", Times, serif; 
+                background:#ece0e0;
+                padding:20px 35px 30px 65px;
+                width: 1130px;
+                opacity: 0.85;
+            }
+            .box{
+                width:750px; 
+                height:300px; 
+                margin:0 auto; 
+                border:1px solid #ccc; 
+                background:#000; 
+                opacity:0.7;  
+                -moz-opacity:0.7;-khtml-opacity: 0.7
+            }
+            h1.rua {
+                font-size:55px;
+                font-family:"Times New Roman", Times, serif;  
+                text-align:center;
+            }
+            button {
+                width: 180px;
+                height: 30px;
+                margin-top: 10px;
+            }
+            h2 {
+                font-size:30px;
+                color: rgb(245, 81, 81);
+                text-align:center;
+            }
+            p.rua {
+                font-size:21px;
+                text-indent: 2em;
+                color: rgb(177, 6, 6);
+            }
+            p.rua2 {
+                font-size:21px;
+                color: rgb(177, 6, 6);
+                text-align:center;
+            }
+            p.rua3{
+                font-size:21px;
+                text-indent: 2em;
+                color: rgb(165, 66, 66);
+            }
+            p.rua4 {
+                font-size:15px;
+                color: rgb(214, 21, 21);
+                text-align:center;
+            }
+            p.a {
+                font-size:15px;
+                text-align:center;
+            }
+            #code{
+                font-size:16px;
+            }
+            #list{
+                background:#e0dddd;
+                font-size:23px;
+                float:left;
+                padding:23px 70px;
+                line-height:80px ;
+                opacity: 0.6;
+                height: 1215px;
+            }
+            #footer {
+                background:rgba(red, green, blue, alpha);
+                font-size:15px;
+                width:100%;
+                color: rgb(245, 81, 81);
+                position:fixed;
+                bottom:0;
+                text-align:center;
+
+            }
+            a{
+                text-decoration:none;
+            }
+            a:link {
+                color:rgb(18, 18, 19);
+            }
+            a:visited {
+                color:rgb(25, 187, 173);
+            }
+            a:hover {
+                color:rgb(241, 68, 68);
+                text-decoration:none;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1 class="rua"><b>丢人博客</b></h1>
+        <p class="rua4">从零开始编写博客第三周，对js的运用</p>
+
+        <div id="colee" style="overflow:hidden; width:700px; margin:0 auto;">
+            <table cellpadding="0" cellspacing="0">
+                <tr>
+                    <td id="colee1" valign="top">
+                        <table cellpadding="2" cellspacing="0">
+                            <tr>
+                                <td><p><img src="../picture/rua1.jpg" width="300px" height="300px"></p></td>
+                                <td><p><img src="../picture/rua2.jpg" width="300px" height="300px"></p></td>
+                                <td><p><img src="../picture/rua4.jpg" width="300px" height="300px"></p></td>
+                                <td><p><img src="../picture/rua3.png" width="300px" height="300px"></p></td>
+                                <td><p><img src="../picture/mo.jpg" width="300px" height="300px"></p></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td id="colee2" valign="top"></td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <script>
+            var speed=20
+            var colee2=document.getElementById("colee2");
+            var colee1=document.getElementById("colee1");
+            var colee=document.getElementById("colee");
+            colee2.innerHTML=colee1.innerHTML
+            function Marquee3(){
+                if(colee2.offsetWidth-colee.scrollLeft<=0)
+                    colee.scrollLeft-=colee1.offsetWidth
+                else{
+                    colee.scrollLeft++
+                }
+            }
+            var mouse=setInterval(Marquee3,speed)
+            colee.onmouseover=function() {clearInterval(mouse)}
+            colee.onmouseout=function() {mouse=setInterval(Marquee3,speed)}
+        </script>
+
+        <script type="text/javascript">
+            function qpow()
+            {
+                window.open('./qpow.html');
+            }
+            function qread()
+            {
+                window.open('./qread.html');
+            }
+            function prime()
+            {
+                window.open('./prime.html');
+            }
+            function kruscal()
+            {
+                window.open('./kruscal.html');
+            }
+        </script>
+
+        <div class="box">
+            <img src="../picture/rua4.jpg" alt="404" width="300px" height="300px" align="left">
+            <h2 class>快速幂</h2>
+            <p class="rua3">简单的说，就是快速的求一个幂式的模。
+                在程序设计过程中，经常要去求一些大数对于某个数的余数，
+                为了得到更快、计算范围更大的算法，产生了快速幂取模算法。</p>
+                <div align="center"><button onclick="qpow()" onmouseover="this.style.marginTop='1px'" onmouseout="this.style.marginTop='10px'">点我具体了解</button></div>
+        </div>
+        <br>
+        <div class="box">
+                <img src="../picture/rua3.png" alt="404" width="300px" height="300px" align="left">
+                <h2 class>快速读入</h2>
+                <p class="rua3">为了大幅度减少大数据读入时间而采用的算法，
+                    核心为输入字符转换成数字。
+                </p>
+                <div align="center"><button onclick="qread()" onmouseover="this.style.marginTop='1px'" onmouseout="this.style.marginTop='10px'">点我具体了解</button></div>
+            </div>
+            <br>
+            <div class="box">
+                    <img src="../picture/rua1.jpg" alt="404" width="300px" height="300px" align="left">
+                    <h2 class>素数筛法</h2>
+                    <p class="rua3">运用素数的性质从而在所需区间内快速的筛选出所有素数，
+                        本处讲解了一种比较朴素的线性素数筛法即升级版筛法。
+                    </p>
+                    <div align="center"><button onclick="prime()" onmouseover="this.style.marginTop='1px'" onmouseout="this.style.marginTop='10px'">点我具体了解</button></div>
+                </div>
+                <br>
+            <div class="box">
+                    <img src="../picture/rua2.jpg" alt="404" width="300px" height="300px" align="left">
+                    <h2 class>最小生成树</h2>
+                    <p class="rua3">运用kruscal算法在很短的时间内从一个无向图中找出一个各边连接最短的树，
+                            主要采用了贪心的思想。
+                    </p>
+                    <div align="center"><button onclick="kruscal()" onmouseover="this.style.marginTop='1px'" onmouseout="this.style.marginTop='10px'">点我具体了解</button></div>
+                </div>
+    </body>
+</html>

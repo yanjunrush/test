@@ -1,0 +1,120 @@
+<html>
+    <head>
+        <title>qread</title>
+        <style type = "text/css">
+            body {
+                background-image:url('../picture/background.jpg');
+                background-size: cover;
+                background-attachment: fixed;
+                -webkit-background-size: cover;
+            }
+            
+            #text {
+                float:right;
+                font-family:"Times New Roman", Times, serif; 
+                background:#ece0e0;
+                padding:20px 35px 30px 65px;
+                width: 1130px;
+                opacity: 0.85;
+            }
+            h1.rua {
+                font-size:45px; 
+                text-align:center;
+            }
+            p.rua {
+                font-size:21px;
+                text-indent: 2em;
+                color: rgb(177, 6, 6);
+            }
+            p.rua2 {
+                font-size:21px;
+                color: rgb(177, 6, 6);
+                text-align:center;
+            }
+            #code{
+                font-size:16px;
+            }
+            #list{
+                background:#e0dddd;
+                font-size:23px;
+                float:left;
+                padding:23px 70px;
+                line-height:80px ;
+                opacity: 0.6;
+                height: 770px;
+            }
+            #footer {
+                background:rgba(red, green, blue, alpha);
+                font-size:15px;
+                width:100%;
+                color: rgb(245, 81, 81);
+                position:fixed;
+                bottom:0;
+                text-align:center;
+
+            }
+            a{
+                text-decoration:none;
+            }
+            a:link {
+                color:rgb(18, 18, 19);
+            }
+            a:visited {
+                color:rgb(25, 187, 173);
+            }
+            a:hover {
+                width: 60px;
+                background: #3f3e3e;
+                color:rgb(241, 68, 68);
+                text-decoration:none;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="list">
+            <dl>
+                 <dt><a href="./homepage.html" target="_block" class="rua">主页</a></dt>
+                 <dt><a href="./qread.html" target="_block" class="rua">快速读入</a></dt>
+                 <dt><a href="./prime.html" target="_block" class="rua">素数筛法</a></dt>
+                 <dt><a href="./Kruscal.html" target="_block" class="rua">最小生成树</a></dt>
+             </dl>
+        </div>
+        <div id="text">
+            <h1 class="rua">快速读入</h1>
+            <img src="../picture/qread.png" alt="404" width="500px" height="300px" align="left">
+            <br>
+            <br>
+            <br>
+            <p class="rua">在c++中 cin 的读入效率是很低很低的，一般我们可以用scanf，
+                    但是在读取较多较大的数字时，这两个都会花掉我们很多时间，所以我们可以用快速读入(貌似只能读数字TAT)
+                    输入字符转换成数字，效率高，在输入数据量特别大的时候采用快速读入可以避免超时
+                    当然正负可以保证。如图左</p>
+                    
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+            <p class="rua2">也可以这样写：</p>
+            <p>
+                <pre id="code">
+                                                            inline int read()
+                                                            {
+                                                                int k=0;
+                                                                char f=1;
+                                                                char c=getchar();
+                                                                for(;!isdigit(c);c=getchar() )
+                                                                    if(c=='-')
+                                                                        f=-1;
+                                                                for(;isdigit(c);c=getchar() )
+                                                                    k=k*10+c-'0';
+                                                                return k*f;
+                                                            }</pre>
+            </p>
+        </div>
+        <div id="footer">
+            <p><b>幸福往往是摸得透彻，而堇业的心却常常隐藏</b></p>
+        </div>
+    </body>

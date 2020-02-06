@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <title>qpow</title>
+        <style type = "text/css">
+            body {
+                background-image:url('../picture/background.jpg');
+                background-size: cover;
+                -webkit-background-size: cover;
+            }
+            
+            #text {
+                float:right;
+                font-family:"Times New Roman", Times, serif; 
+                background:#ece0e0;
+                padding:20px 35px 30px 65px;
+                width: 1130px;
+                opacity: 0.85;
+            }
+            h1.rua {
+                font-size:45px; 
+                text-align:center;
+            }
+            p.rua {
+                font-size:21px;
+                text-indent: 2em;
+                color: rgb(177, 6, 6);
+            }
+            #list{
+                background:#e0dddd;
+                font-size:23px;
+                float:left;
+                padding:23px 70px;
+                line-height:80px ;
+                opacity: 0.6;
+                height: 600px;
+            }
+            #footer {
+                background:rgba(red, green, blue, alpha);
+                font-size:15px;
+                width:100%;
+                color: rgb(245, 81, 81);
+                position:fixed;
+                bottom:0;
+                text-align:center;
+
+            }
+            a{
+                text-decoration:none
+            }
+            a:link {
+                color:rgb(18, 18, 19);
+            }
+            a:visited {
+                color:rgb(25, 187, 173);
+            }
+            a:hover {
+                width: 60px;
+                background: #3f3e3e;
+                color:rgb(241, 68, 68);
+                text-decoration:none;
+            }
+
+        </style>
+    <body>
+        <div id="list">
+            <dl>
+                 <dt><a href="./homepage.html" target="_block" class="rua">主页</a></dt>
+                 <dt><a href="./qread.html" target="_block" class="rua">快速读入</a></dt>
+                 <dt><a href="./prime.html" target="_block" class="rua">素数筛法</a></dt>
+                 <dt><a href="./Kruscal.html" target="_block" class="rua">最小生成树</a></dt>
+             </dl>
+        </div>
+        <div id="text">
+            <h1 class="rua">快速幂</h1>
+            <p class="rua">由于c语言自带的pow幂运算存在精度误差，列如5的3次方会得到124，再加上普通的pow运算时间复杂度过于复杂，所以我们应学会使用快速幂</p>
+            <img src="../picture/qpow.png" alt="404" width="700px" height="400px" align="right">
+            <p class="rua">用法：用于求解 a 的 b 次方，而b是一个非常大的数，用O（n）的复杂度会超时。那么就需要这个算法，注意它不但可以对数求次幂，而且可用于矩阵快速幂。
+                假如求 x ^ n 次方，我们可以把 n 表示为 2^k1 + 2k2 + 2^k3….，可以证明所有数都可以用前式来表示。（其实就是二进制表示数的原理），
+                那么 x^n = x^2^k1 * x^2^k2 * x^2^k3……那么就可以利用二进制来加快计算速度了。假如 x^23 , 23转化为二进制为 10111， 即 x^23 = (x^16) * ( x^4) * ( x^2) * (x^1);
+                通过判断二进制x是否为1来判断是否加入运算中,(x>>1)每次向右移动一位，(x&1)判断是否为1，如果是1，则加入运算。如果不是，则x的幂次方继续乘方
+                (1,2,4,8,16,32增长，作为待用乘法因子)。</p>
+        </div>
+        <div id="footer">
+            <p><b>幸福往往是摸得透彻，而堇业的心却常常隐藏</b></p>
+        </div>
+    </body>
